@@ -24,10 +24,23 @@
                 <tr>
                     <td>@cat.Name</td>
                     <td>@cat.Description</td>
-                    <td><a class="btn btn-link" asp-controller="categories" asp-action="edit" asp-route-id="@cat.CategoryId">Edit</a></td>
+                    <td><a class="btn-link" asp-controller="categories" asp-action="edit" asp-route-id="@cat.CategoryId">Edit</a></td>
+                    <td><a class="btn-link" asp-controller="categories" asp-action="delete" asp-route-categoryid="@cat.CategoryId" onclick="return confirmDelete()">Delete</a></td>
                 </tr>
             }
         </tbody>
     </table>
+
+    <br />
+
+    <a class="btn-primary" asp-controller="categories" asp-action="add">Add</a>
 }
 
+
+@section scripts{
+    <script>
+        function confirmDelete(){
+            return confirm("Are you sure to delete category?");
+        }
+    </script>
+}
